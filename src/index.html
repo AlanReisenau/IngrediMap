@@ -30,23 +30,24 @@
 <div id="add-recipe-modal" class="modal-overlay">
     <div class="modal-content">
         <span class="close-btn">&times;</span>
-        <h2 id="form-title">Add to IngrediMap</h2> <form id="recipe-form">
-        <input type="hidden" id="edit-mode-id">
+        <h2 id="form-title">Add to IngrediMap</h2>
+        <form id="recipe-form">
+            <input type="hidden" id="edit-mode-id">
 
-        <label for="recipe-name">Recipe Name:</label>
-        <input type="text" id="recipe-name" required>
+            <label for="recipe-name">Recipe Name:</label>
+            <input type="text" id="recipe-name" required>
 
-        <label for="recipe-cuisine">Cuisine:</label>
-        <input type="text" id="recipe-cuisine" required>
+            <label for="recipe-cuisine">Cuisine:</label>
+            <input type="text" id="recipe-cuisine" required>
 
-        <label for="recipe-ingredients">Ingredients (comma-separated):</label>
-        <input type="text" id="recipe-ingredients" required>
+            <label for="recipe-ingredients">Ingredients (e.g., Flour (1 cup), Sugar, Eggs (2)):</label>
+            <input type="text" id="recipe-ingredients" required>
 
-        <label for="recipe-instructions">Instructions (one step per line):</label>
-        <textarea id="recipe-instructions" rows="5" required></textarea>
+            <label for="recipe-instructions">Instructions (one step per line):</label>
+            <textarea id="recipe-instructions" rows="5" required></textarea>
 
-        <button type="submit">Save Recipe</button>
-    </form>
+            <button type="submit">Save Recipe</button>
+        </form>
     </div>
 </div>
 

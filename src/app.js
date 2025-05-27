@@ -35,6 +35,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 4. Core Helper Functions ---
 
+    // Parses an ingredient string like "Flour (1 cup), Sugar" into objects.
+    function parseIngredientsString(ingredientsStr) {
+        if (!ingredientsStr) return [];
+        return ingredientsStr.split(',').map(item => {
+            const match = item.trim().match(/^(.*?)\s*\((.*?)\)$/);
+            if (match) {
+                // Found name and quantity in parentheses, e.g., "Flour (1 cup)"
+                return { name: match[1].trim(), quantity: match[2].trim() };
+            } else {
+                // No quantity in parentheses, treat the whole string as the name
+                return { name: item.trim(), quantity: '' };
+            }
+        });
+    }
+
+    // Formats an array of ingredient objects back into a string for the input field.
+    function formatIngredientsArray(ingredientsArr) {
+        if (!ingredientsArr || ingredientsArr.length === 0) return '';
+        return ingredientsArr.map(ing => {
+            if (ing.quantity) {
+                return `${ing.name} (${ing.quantity})`;
+            }
+            return ing.name;
+        }).join(', ');
+    }
+
     function saveData() {
         const allRecipes = nodes.get({ fields: ['recipeData'] }).map(node => node.recipeData);
         localStorage.setItem('ingrediMapRecipes', JSON.stringify(allRecipes));
@@ -68,8 +94,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const newEdges = [];
         for (let i = 0; i < recipes.length; i++) {
             for (let j = i + 1; j < recipes.length; j++) {
-                const ingredients1 = new Set((recipes[i].ingredients || []).map(ing => ing.toLowerCase().trim()));
-                const ingredients2 = new Set((recipes[j].ingredients || []).map(ing => ing.toLowerCase().trim()));
+                // MODIFIED: Compare ingredient names, ignoring quantity.
+                const ingredients1 = new Set((recipes[i].ingredients || []).map(ing => ing.name.toLowerCase().trim()));
+                const ingredients2 = new Set((recipes[j].ingredients || []).map(ing => ing.name.toLowerCase().trim()));
                 const sharedIngredients = [...ingredients1].filter(ing => ingredients2.has(ing));
 
                 if (sharedIngredients.length >= SHARED_INGREDIENT_THRESHOLD) {
@@ -89,8 +116,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const newEdges = [];
         const existingNodesData = nodes.get({ filter: n => n.id !== recipe.id });
         existingNodesData.forEach(existingNode => {
-            const ingredients1 = new Set((recipe.ingredients || []).map(ing => ing.toLowerCase().trim()));
-            const ingredients2 = new Set((existingNode.recipeData.ingredients || []).map(ing => ing.toLowerCase().trim()));
+            // MODIFIED: Compare ingredient names, ignoring quantity.
+            const ingredients1 = new Set((recipe.ingredients || []).map(ing => ing.name.toLowerCase().trim()));
+            const ingredients2 = new Set((existingNode.recipeData.ingredients || []).map(ing => ing.name.toLowerCase().trim()));
             const sharedIngredients = [...ingredients1].filter(ing => ingredients2.has(ing));
 
             if (sharedIngredients.length >= SHARED_INGREDIENT_THRESHOLD) {
@@ -110,7 +138,12 @@ document.addEventListener('DOMContentLoaded', () => {
         infoRecipeName.textContent = recipeData.name;
         infoRecipeCuisine.textContent = `Cuisine: ${recipeData.cuisine}`;
         infoIngredientList.innerHTML = '';
-        (recipeData.ingredients || []).forEach(ing => { const li = document.createElement('li'); li.textContent = ing; infoIngredientList.appendChild(li); });
+        // MODIFIED: Display ingredients with their quantities.
+        (recipeData.ingredients || []).forEach(ing => {
+            const li = document.createElement('li');
+            li.textContent = ing.quantity ? `${ing.name} (${ing.quantity})` : ing.name;
+            infoIngredientList.appendChild(li);
+        });
         infoInstructionsList.innerHTML = '';
         (recipeData.instructions || []).forEach(step => { const li = document.createElement('li'); li.textContent = step; infoInstructionsList.appendChild(li); });
         infoPanel.classList.add('show');
@@ -123,7 +156,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const recipeIdToEdit = editModeIdInput.value;
         const name = document.getElementById('recipe-name').value;
         const cuisine = document.getElementById('recipe-cuisine').value;
-        const ingredients = document.getElementById('recipe-ingredients').value.split(',').map(item => item.trim());
+        // MODIFIED: Use the new parsing function to handle quantities.
+        const ingredients = parseIngredientsString(document.getElementById('recipe-ingredients').value);
         const instructions = document.getElementById('recipe-instructions').value.split('\n').filter(step => step.trim() !== '');
 
         if (recipeIdToEdit) {
@@ -155,7 +189,8 @@ document.addEventListener('DOMContentLoaded', () => {
         editModeIdInput.value = data.id;
         document.getElementById('recipe-name').value = data.name;
         document.getElementById('recipe-cuisine').value = data.cuisine;
-        document.getElementById('recipe-ingredients').value = (data.ingredients || []).join(', ');
+        // MODIFIED: Use the new formatting function to populate the input field.
+        document.getElementById('recipe-ingredients').value = formatIngredientsArray(data.ingredients);
         document.getElementById('recipe-instructions').value = (data.instructions || []).join('\n');
         modal.classList.add('show');
     }
@@ -189,6 +224,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 7. Application Initialization ---
     async function initializeApp() {
+        // NOTE: You may want to clear localStorage once to load the new JSON format.
+        // localStorage.removeItem('ingrediMapRecipes');
         const recipes = await loadData();
         populateGraph(recipes);
     }

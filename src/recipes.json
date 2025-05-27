@@ -4,7 +4,13 @@
     "name": "Spaghetti Carbonara",
     "cuisine": "Italian",
     "mealType": "Dinner",
-    "ingredients": ["Spaghetti", "Guanciale", "Eggs", "Pecorino Romano", "Black Pepper"],
+    "ingredients": [
+      { "name": "Spaghetti", "quantity": "1 lb" },
+      { "name": "Guanciale", "quantity": "150g, cubed" },
+      { "name": "Eggs", "quantity": "4 large" },
+      { "name": "Pecorino Romano", "quantity": "1 cup, grated" },
+      { "name": "Black Pepper", "quantity": "to taste" }
+    ],
     "instructions": [
       "Cook spaghetti according to package directions.",
       "While pasta cooks, crisp the guanciale in a pan.",
@@ -18,7 +24,12 @@
     "name": "Fettuccine Alfredo",
     "cuisine": "Italian",
     "mealType": "Dinner",
-    "ingredients": ["Fettuccine", "Butter", "Parmesan Cheese", "Heavy Cream"],
+    "ingredients": [
+      { "name": "Fettuccine", "quantity": "1 lb" },
+      { "name": "Butter", "quantity": "1/2 cup" },
+      { "name": "Parmesan Cheese", "quantity": "1.5 cups, grated" },
+      { "name": "Heavy Cream", "quantity": "1 cup" }
+    ],
     "instructions": [
       "Cook fettuccine until al dente.",
       "Melt butter in a large skillet over medium heat.",
@@ -32,7 +43,13 @@
     "name": "Chicken Tinga Tostadas",
     "cuisine": "Mexican",
     "mealType": "Dinner",
-    "ingredients": ["Chicken Breast", "Tomatoes", "Chipotle in Adobo", "Onion", "Tostadas"],
+    "ingredients": [
+      { "name": "Chicken Breast", "quantity": "1 lb" },
+      { "name": "Tomatoes", "quantity": "3" },
+      { "name": "Chipotle in Adobo", "quantity": "2 peppers" },
+      { "name": "Onion", "quantity": "1/2, sliced" },
+      { "name": "Tostadas", "quantity": "8" }
+    ],
     "instructions": [
       "Poach and shred the chicken breast.",
       "Blend tomatoes, chipotle, and a piece of onion to make the sauce.",
@@ -46,7 +63,12 @@
     "name": "Chocolate Avocado Mousse",
     "cuisine": "Dessert",
     "mealType": "Dessert",
-    "ingredients": ["Avocado", "Cocoa Powder", "Maple Syrup", "Vanilla Extract"],
+    "ingredients": [
+      { "name": "Avocado", "quantity": "2 large, ripe" },
+      { "name": "Cocoa Powder", "quantity": "1/2 cup" },
+      { "name": "Maple Syrup", "quantity": "1/4 cup" },
+      { "name": "Vanilla Extract", "quantity": "1 tsp" }
+    ],
     "instructions": [
       "Combine all ingredients in a high-speed blender or food processor.",
       "Blend until completely smooth and creamy, scraping down the sides as needed.",
