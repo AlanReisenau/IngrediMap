@@ -1,0 +1,57 @@
+[
+  {
+    "id": "classic-spaghetti-carbonara",
+    "name": "Spaghetti Carbonara",
+    "cuisine": "Italian",
+    "mealType": "Dinner",
+    "ingredients": ["Spaghetti", "Guanciale", "Eggs", "Pecorino Romano", "Black Pepper"],
+    "instructions": [
+      "Cook spaghetti according to package directions.",
+      "While pasta cooks, crisp the guanciale in a pan.",
+      "In a bowl, whisk eggs, Pecorino Romano, and black pepper.",
+      "Drain pasta, reserving some pasta water. Add pasta to the pan with guanciale.",
+      "Remove from heat, then quickly mix in the egg mixture, adding pasta water to create a creamy sauce."
+    ]
+  },
+  {
+    "id": "fettuccine-alfredo",
+    "name": "Fettuccine Alfredo",
+    "cuisine": "Italian",
+    "mealType": "Dinner",
+    "ingredients": ["Fettuccine", "Butter", "Parmesan Cheese", "Heavy Cream"],
+    "instructions": [
+      "Cook fettuccine until al dente.",
+      "Melt butter in a large skillet over medium heat.",
+      "Stir in heavy cream and bring to a simmer.",
+      "Whisk in Parmesan cheese until the sauce is smooth.",
+      "Add the cooked fettuccine and toss to coat."
+    ]
+  },
+  {
+    "id": "chicken-tinga-tostadas",
+    "name": "Chicken Tinga Tostadas",
+    "cuisine": "Mexican",
+    "mealType": "Dinner",
+    "ingredients": ["Chicken Breast", "Tomatoes", "Chipotle in Adobo", "Onion", "Tostadas"],
+    "instructions": [
+      "Poach and shred the chicken breast.",
+      "Blend tomatoes, chipotle, and a piece of onion to make the sauce.",
+      "Sauté sliced onions in a pan, then add the sauce and shredded chicken.",
+      "Simmer for 10-15 minutes until the flavors combine.",
+      "Serve the chicken tinga over crispy tostadas."
+    ]
+  },
+  {
+    "id": "chocolate-avocado-mousse",
+    "name": "Chocolate Avocado Mousse",
+    "cuisine": "Dessert",
+    "mealType": "Dessert",
+    "ingredients": ["Avocado", "Cocoa Powder", "Maple Syrup", "Vanilla Extract"],
+    "instructions": [
+      "Combine all ingredients in a high-speed blender or food processor.",
+      "Blend until completely smooth and creamy, scraping down the sides as needed.",
+      "Taste and adjust sweetness if necessary.",
+      "Divide into serving dishes and chill for at least 30 minutes before serving."
+    ]
+  }
+]
