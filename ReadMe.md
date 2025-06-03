@@ -85,4 +85,5 @@ The project is organized with the main Electron and configuration files at the t
 ├── main.js            # The main Electron process script \
 ├── package.json       # Project metadata and dependencies \
 ├── package-lock.json  # Exact versions of dependencies \
+├── preload.js         # Preload File for secure IPC channels between main and renderer \
 └── icon.ico           # Application icon \
