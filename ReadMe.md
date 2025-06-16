@@ -31,6 +31,14 @@ IngrediMap is an interactive desktop application that visualizes a network of re
 
 To run IngrediMap, you first need to install its dependencies. You can then either run it in a live development mode or build a final, standalone executable.
 
+**Use from Standalone:**
+1. Download executable (.exe file) release from righthand side of GitHub Repo under releases.
+
+2. Luanch Setup program just downloaded.
+
+3. enjoy
+
+**Build from Source Code:**
 1.  **Prerequisites**:
     * [Node.js](https://nodejs.org/) and `npm` installed on your system.
 
