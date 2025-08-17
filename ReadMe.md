@@ -1,115 +1,36 @@
 # IngrediMap: A Visual Recipe PWA 🍲
 
----
+IngrediMap is an interactive **Progressive Web App (PWA)** that visualizes your recipe collection as a dynamic network. It's built to run on any modern browser, from desktop to mobile, and helps you discover new meal ideas by connecting recipes that share common ingredients.
+
+[**➡️ View the Live Demo Here**](https://alanreisenau.github.io/IngrediMap/)
+
+## How It Works
+
+IngrediMap creates a visual map of your recipes. Each recipe is a circle (or "node"), and a line is drawn between any two recipes that share ingredients. This allows you to see, at a glance, how your recipes are connected and discover new combinations based on the ingredients you have on hand.
 
 ## Features ✨
 
-Interactive Graph Visualization: Recipes are displayed as nodes in a dynamic, physics-based graph using the vis.js library.
-
-Mobile-First & Responsive: The interface is designed to work beautifully on any screen size, from a large desktop monitor to your phone.
-
-Home Screen Installation: On a supported mobile browser, you can "install" IngrediMap to your home screen, making it look and feel like a native app.
-
-Offline Functionality: Thanks to Service Workers, the app caches all necessary files, allowing you to browse your recipes even without an internet connection.
-
-Recipe Relationships: Edges between recipes instantly show you which dishes share common ingredients.
-
-CRUD Functionality:
-
-Add: Easily add new recipes to your personal collection through a simple form.
-
-Edit: Modify existing recipes to tweak ingredients or instructions.
-
-Delete: Remove recipes you no longer need.
-
-Local Data Persistence: Your recipe collection is automatically saved to the browser's localStorage, so your data persists across sessions.
-
----
-
-## Tech Stack 💻
-
-Frontend: HTML5, CSS3, JavaScript (ES6+)
-
-App Framework: Progressive Web App (PWA) APIs (Service Workers, Web App Manifest)
-
-Visualization Library: vis.js (specifically vis-network)
-
-Data Storage: Browser localStorage for client-side data persistence.
-
----
-
-## Getting Started 🚀
-
-To run IngrediMap locally for development, you'll need a simple web server, as modern browser security policies can restrict some PWA features from running directly from the local filesystem (file:///).
-
-Prerequisites:
-
-Node.js and npm installed on your system.
-
-Installation:
-
-Clone this repository to your local machine.
-
-Navigate to the project's root directory in your terminal.
-
-Install live-server, a simple development server:
-
-```bash
-npm install -g live-server
-```
-
-Running in Development Mode:
-
-From the project's root directory, start the server on the public folder:
-
-```bash
-live-server public
-```
-
-Your default web browser will automatically open to the correct address. The server supports live-reloading, so any changes you make to the code will be reflected instantly.
-
----
-
-## Deployment 🌐
-
-This application is a static website and can be deployed to any static hosting service. Excellent free options include:
-
-GitHub Pages
-
-Netlify (simply drag and drop the public folder)
-
-Vercel
-
----
+* **Interactive Graph Visualization**: A dynamic, physics-based graph of your recipes powered by `vis.js`.
+* **Mobile-First & Responsive**: A clean interface that works beautifully on any screen size.
+* **Home Screen App**: Installable on your phone for a native app-like experience.
+* **Offline Functionality**: Browse your recipes anytime, even without an internet connection.
+* **Local & Private Data**: All recipes are stored directly in your browser's `localStorage`. Your data stays on your device and is never uploaded to a server.
+* **Full Recipe Management**: **Add**, **Edit**, and **Delete** recipes with a simple, intuitive interface.
 
 ## How to Use 🧑‍🍳
 
-After launching the application, you can interact with it as follows:
+* **Explore**: Drag nodes to explore the recipe network. Use pinch-to-zoom on mobile.
+* **View Details**: Tap any recipe node to see its full ingredient list and instructions.
+* **Add a Recipe**: Use the **+** button to open the recipe form.
+* **Edit & Delete**: Select a recipe to reveal the edit and delete options in the side panel.
 
-Explore: Click and drag nodes to explore the recipe network. On mobile, you can use touch gestures like pinch-to-zoom.
+## Tech Stack 💻
 
-View a Recipe: Tap on any recipe circle (node) to open the info panel, which displays the recipe's details.
+* **Frontend**: HTML5, CSS3, JavaScript (ES6+)
+* **Framework**: Progressive Web App (PWA) APIs
+* **Visualization**: `vis.js` Network
+* **Storage**: Browser `localStorage`
 
-Add a Recipe: Tap the + button in the bottom-right corner to open a modal form. Fill in the details and submit to add it to the graph.
+## Deployment
 
-Edit & Delete: Select a recipe by tapping on it, then use the "Edit" or "Delete" buttons in the info panel.
-
----
-
-## File Structure 📂
-
-The project is organized with all frontend source code and PWA configuration files inside the public directory.
-
-```text
-.
-└── public/
-├── app.js         # Core application logic, event handling, and vis.js integration
-├── index.html     # The main HTML file for the application
-├── manifest.json  # Web App Manifest for PWA properties
-├── recipes.json   # Initial seed data with sample recipes
-├── service-worker.js # Handles offline caching and PWA functionality
-├── style.css      # All styles for the application, including responsive rules
-└── icons/
-├── icon-192.png # App icon for the home screen (192x192)
-└── icon-512.png # Larger app icon for splash screens (512x512)
-```
+This application is hosted on **GitHub Pages**. Any changes pushed to the `main` branch will automatically trigger a redeployment of the live site.
