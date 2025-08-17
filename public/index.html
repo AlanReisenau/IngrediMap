@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Make the layout responsive to the device's screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IngrediMap - A Visual Recipe Network</title>
+
+    <!-- Link to the Web App Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Link to your existing stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- vis.js library from a CDN -->
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+</head>
+<body>
+<!-- Main container for the recipe network graph -->
+<div id="mynetwork"></div>
+
+<!-- Panel to display detailed information for a selected recipe -->
+<div id="info-panel" class="info-panel-hidden">
+    <button id="close-panel-btn">×</button>
+    <div id="info-content">
+        <!-- Recipe details will be injected here by app.js -->
+    </div>
+    <div id="info-buttons">
+        <button id="edit-recipe-btn">Edit</button>
+        <button id="delete-recipe-btn">Delete</button>
+    </div>
+</div>
+
+<!-- Floating Action Button to add a new recipe -->
+<button id="add-recipe-fab">+</button>
+
+<!-- Modal for adding or editing a recipe -->
+<div id="recipe-modal" class="modal-hidden">
+    <div class="modal-content">
+        <span id="close-modal-btn" class="close-button">&times;</span>
+        <h2 id="modal-title">Add a New Recipe</h2>
+        <form id="recipe-form">
+            <input type="hidden" id="recipe-id">
+            <label for="recipe-name">Recipe Name:</label>
+            <input type="text" id="recipe-name" required>
+
+            <label for="recipe-cuisine">Cuisine:</label>
+            <input type="text" id="recipe-cuisine">
+
+            <label for="recipe-ingredients">Ingredients (comma-separated):</label>
+            <textarea id="recipe-ingredients" rows="4" required></textarea>
+
+            <label for="recipe-instructions">Instructions:</label>
+            <textarea id="recipe-instructions" rows="6" required></textarea>
+
+            <button type="submit">Save Recipe</button>
+        </form>
+    </div>
+</div>
+
+<!-- Your existing app logic -->
+<script src="app.js"></script>
+
+<!-- Script to register the Service Worker -->
+<script>
+    // Check if the browser supports service workers
+    if ('serviceWorker' in navigator) {
+        // Register the service worker file on window load
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(registration => {
+                    console.log('Service Worker registered successfully:', registration);
+                })
+                .catch(error => {
+                    console.log('Service Worker registration failed:', error);
+                });
+        });
+    }
+</script>
+</body>
+</html>

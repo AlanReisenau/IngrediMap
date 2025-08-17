@@ -1,96 +1,92 @@
-# IngrediMap: A Visual Recipe Network 🍲
+IngrediMap: A Visual Recipe PWA 🍲
+IngrediMap is an interactive Progressive Web App (PWA) that visualizes a network of recipes. It's designed to run on any modern browser, from desktop to mobile. Recipes are represented as nodes, and connections (edges) are drawn between them if they share ingredients, providing a unique way to discover new dishes based on what you already have.
 
-IngrediMap is an interactive desktop application that visualizes a network of recipes. Recipes are represented as nodes, and connections (edges) are drawn between them if they share a certain number of ingredients. It provides a unique way to discover new recipes based on the ingredients you already have. The application allows for adding, editing, and deleting recipes, with all data saved locally on your machine.
+Features ✨
+Interactive Graph Visualization: Recipes are displayed as nodes in a dynamic, physics-based graph using the vis.js library.
 
-***
+Mobile-First & Responsive: The interface is designed to work beautifully on any screen size, from a large desktop monitor to your phone.
 
-## Features ✨
+Home Screen Installation: On a supported mobile browser, you can "install" IngrediMap to your home screen, making it look and feel like a native app.
 
-* **Interactive Graph Visualization**: Recipes are displayed as nodes in a dynamic, physics-based graph using the `vis.js` library.
-* **Recipe Relationships**: Edges between recipes instantly show you which dishes share common ingredients.
-* **Detailed Information Panel**: Click on a recipe node to view its full details, including cuisine type, ingredients, and step-by-step instructions.
-* **CRUD Functionality**:
-    * **Add**: Easily add new recipes to your personal collection through a simple form.
-    * **Edit**: Modify existing recipes to tweak ingredients or instructions.
-    * **Delete**: Remove recipes you no longer need.
-* **Local Data Persistence**: Your recipe collection is automatically saved to the browser's `localStorage`, so your data persists between application launches.
-* **Initial Data Loading**: On first launch or when storage is empty, the application loads a set of sample recipes from a `recipes.json` file.
+Offline Functionality: Thanks to Service Workers, the app caches all necessary files, allowing you to browse your recipes even without an internet connection.
 
-***
+Recipe Relationships: Edges between recipes instantly show you which dishes share common ingredients.
 
-## Tech Stack 💻
+CRUD Functionality:
 
-* **Framework**: Electron
-* **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-* **Visualization Library**: `vis.js` (specifically `vis-network`)
-* **Data Storage**: Browser `localStorage` for client-side data persistence.
+Add: Easily add new recipes to your personal collection through a simple form.
 
-***
+Edit: Modify existing recipes to tweak ingredients or instructions.
 
-## Getting Started: Building the Application 🚀
+Delete: Remove recipes you no longer need.
 
-To run IngrediMap, you first need to install its dependencies. You can then either run it in a live development mode or build a final, standalone executable.
+Local Data Persistence: Your recipe collection is automatically saved to the browser's localStorage, so your data persists across sessions.
 
-**Use from Standalone:**
-1. Download executable (.exe file) release from righthand side of GitHub Repo under releases.
+Tech Stack 💻
+Frontend: HTML5, CSS3, JavaScript (ES6+)
 
-2. Luanch Setup program just downloaded.
+App Framework: Progressive Web App (PWA) APIs (Service Workers, Web App Manifest)
 
-3. enjoy
+Visualization Library: vis.js (specifically vis-network)
 
-**Build from Source Code:**
-1.  **Prerequisites**:
-    * [Node.js](https://nodejs.org/) and `npm` installed on your system.
+Data Storage: Browser localStorage for client-side data persistence.
 
-2.  **Installation**:
-    * Clone this repository to your local machine.
-    * Navigate to the project's root directory in your terminal.
-    * Install all the required dependencies using npm:
-        ```bash
-        npm install
-        ```
+Getting Started 🚀
+To run IngrediMap locally for development, you'll need a simple web server, as modern browser security policies can restrict some PWA features from running directly from the local filesystem (file:///).
 
-3.  **Running in Development Mode**:
-    * To run the application in a live-reloading development environment without creating an executable, use the `start` command:
-        ```bash
-        npm run start
-        ```
-    * This will launch the application window and automatically reload it if you make changes to the source code.
+Prerequisites:
 
-4.  **Building the Executable**:
-    * To compile the application into a standalone executable for your current operating system (e.g., `.exe` for Windows, `.dmg` for macOS), run the `make` command:
-        ```bash
-        npm run make
-        ```
-    * The build process will begin, and upon completion, you will find the final application in a new `out` directory.
+Node.js and npm installed on your system.
 
-***
+Installation:
 
-## How to Use 🧑‍🍳
+Clone this repository to your local machine.
 
-After building the application using the steps above, navigate to the `out` directory and find the subfolder containing the finished build. Launch the IngrediMap executable to start the application.
+Navigate to the project's root directory in your terminal.
 
-* **Explore**: Click and drag nodes to explore the recipe network. Hover over the lines (edges) to see the shared ingredients.
-* **View a Recipe**: Click on any recipe circle (node) to open the info panel on the right, which displays the recipe's details.
-* **Add a Recipe**: Click the `+` button in the bottom-right corner to open a modal form. Fill in the details and submit to add it to the graph.
-* **Edit a Recipe**: First, click on a recipe to open its details in the info panel. Then, click the "**Edit**" button. The form will be pre-filled with the recipe's current information for you to modify.
-* **Delete a Recipe**: Select a recipe by clicking on it, then click the "**Delete**" button in the info panel. You'll be asked to confirm the deletion.
+Install live-server, a simple development server:
 
-***
+npm install -g live-server
 
-## File Structure 📂
+Running in Development Mode:
 
-The project is organized with the main Electron and configuration files at the top level, and all the frontend rendering code inside the `src` directory.
+From the project's root directory, start the server on the public folder:
+
+live-server public
+
+Your default web browser will automatically open to the correct address. The server supports live-reloading, so any changes you make to the code will be reflected instantly.
+
+Deployment 🌐
+This application is a static website and can be deployed to any static hosting service. Excellent free options include:
+
+GitHub Pages
+
+Netlify (simply drag and drop the public folder)
+
+Vercel
+
+How to Use 🧑‍🍳
+After launching the application, you can interact with it as follows:
+
+Explore: Click and drag nodes to explore the recipe network. On mobile, you can use touch gestures like pinch-to-zoom.
+
+View a Recipe: Tap on any recipe circle (node) to open the info panel, which displays the recipe's details.
+
+Add a Recipe: Tap the + button in the bottom-right corner to open a modal form. Fill in the details and submit to add it to the graph.
+
+Edit & Delete: Select a recipe by tapping on it, then use the "Edit" or "Delete" buttons in the info panel.
+
+File Structure 📂
+The project is organized with all frontend source code and PWA configuration files inside the public directory.
 
 .
-├── out/               # Directory where builds are output (auto-generated) \
-├── node_modules/      # Directory where dependencies are installed (auto-generated) \
-├── src/               # Contains all frontend source code \
-│   ├── index.html     # The main HTML for the renderer process \
-│   ├── style.css      # Styles for the application \
-│   ├── app.js         # Core application logic, event handling, and vis.js integration \
-│   └── recipes.json   # Initial seed data with sample recipes \
-├── main.js            # The main Electron process script \
-├── package.json       # Project metadata and dependencies \
-├── package-lock.json  # Exact versions of dependencies \
-└── icon.ico           # Application icon \
+└── public/
+├── app.js         # Core application logic, event handling, and vis.js integration
+├── index.html     # The main HTML file for the application
+├── manifest.json  # Web App Manifest for PWA properties
+├── recipes.json   # Initial seed data with sample recipes
+├── service-worker.js # Handles offline caching and PWA functionality
+├── style.css      # All styles for the application, including responsive rules
+└── icons/
+├── icon-192.png # App icon for the home screen (192x192)
+└── icon-512.png # Larger app icon for splash screens (512x512)
