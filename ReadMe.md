@@ -1,7 +1,9 @@
-IngrediMap: A Visual Recipe PWA 🍲
-IngrediMap is an interactive Progressive Web App (PWA) that visualizes a network of recipes. It's designed to run on any modern browser, from desktop to mobile. Recipes are represented as nodes, and connections (edges) are drawn between them if they share ingredients, providing a unique way to discover new dishes based on what you already have.
+# IngrediMap: A Visual Recipe PWA 🍲
 
-Features ✨
+---
+
+## Features ✨
+
 Interactive Graph Visualization: Recipes are displayed as nodes in a dynamic, physics-based graph using the vis.js library.
 
 Mobile-First & Responsive: The interface is designed to work beautifully on any screen size, from a large desktop monitor to your phone.
@@ -22,7 +24,10 @@ Delete: Remove recipes you no longer need.
 
 Local Data Persistence: Your recipe collection is automatically saved to the browser's localStorage, so your data persists across sessions.
 
-Tech Stack 💻
+---
+
+## Tech Stack 💻
+
 Frontend: HTML5, CSS3, JavaScript (ES6+)
 
 App Framework: Progressive Web App (PWA) APIs (Service Workers, Web App Manifest)
@@ -31,7 +36,10 @@ Visualization Library: vis.js (specifically vis-network)
 
 Data Storage: Browser localStorage for client-side data persistence.
 
-Getting Started 🚀
+---
+
+## Getting Started 🚀
+
 To run IngrediMap locally for development, you'll need a simple web server, as modern browser security policies can restrict some PWA features from running directly from the local filesystem (file:///).
 
 Prerequisites:
@@ -46,17 +54,24 @@ Navigate to the project's root directory in your terminal.
 
 Install live-server, a simple development server:
 
+```bash
 npm install -g live-server
+```
 
 Running in Development Mode:
 
 From the project's root directory, start the server on the public folder:
 
+```bash
 live-server public
+```
 
 Your default web browser will automatically open to the correct address. The server supports live-reloading, so any changes you make to the code will be reflected instantly.
 
-Deployment 🌐
+---
+
+## Deployment 🌐
+
 This application is a static website and can be deployed to any static hosting service. Excellent free options include:
 
 GitHub Pages
@@ -65,7 +80,10 @@ Netlify (simply drag and drop the public folder)
 
 Vercel
 
-How to Use 🧑‍🍳
+---
+
+## How to Use 🧑‍🍳
+
 After launching the application, you can interact with it as follows:
 
 Explore: Click and drag nodes to explore the recipe network. On mobile, you can use touch gestures like pinch-to-zoom.
@@ -76,9 +94,13 @@ Add a Recipe: Tap the + button in the bottom-right corner to open a modal form. 
 
 Edit & Delete: Select a recipe by tapping on it, then use the "Edit" or "Delete" buttons in the info panel.
 
-File Structure 📂
+---
+
+## File Structure 📂
+
 The project is organized with all frontend source code and PWA configuration files inside the public directory.
 
+```text
 .
 └── public/
 ├── app.js         # Core application logic, event handling, and vis.js integration
@@ -90,3 +112,4 @@ The project is organized with all frontend source code and PWA configuration fil
 └── icons/
 ├── icon-192.png # App icon for the home screen (192x192)
 └── icon-512.png # Larger app icon for splash screens (512x512)
+```
