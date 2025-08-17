@@ -1,0 +1,222 @@
+/* General Body and Typography Styles */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent scrolling of the page itself */
+    background-color: #f0f2f5;
+}
+
+/* Vis.js Network Container */
+#mynetwork {
+    width: 100vw;
+    height: 100vh;
+    border: none;
+}
+
+/* Info Panel for Recipe Details */
+#info-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 350px;
+    height: 100vh;
+    background-color: white;
+    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+#info-panel.info-panel-visible {
+    transform: translateX(0);
+}
+
+#info-content {
+    padding: 20px;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+#info-content h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+#info-content h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #555;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+#info-content ul, #info-content ol {
+    padding-left: 20px;
+}
+
+#info-buttons {
+    padding: 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 10px;
+}
+
+#info-buttons button {
+    flex-grow: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s;
+}
+
+#edit-recipe-btn {
+    background-color: #007bff;
+    color: white;
+}
+#edit-recipe-btn:hover { background-color: #0056b3; }
+
+#delete-recipe-btn {
+    background-color: #dc3545;
+    color: white;
+}
+#delete-recipe-btn:hover { background-color: #c82333; }
+
+#close-panel-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: #888;
+}
+
+/* Floating Action Button (FAB) */
+#add-recipe-fab {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 36px;
+    line-height: 60px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    cursor: pointer;
+    z-index: 1001;
+    transition: transform 0.2s;
+}
+#add-recipe-fab:hover { transform: scale(1.1); }
+
+/* Modal for Add/Edit Form */
+.modal-hidden { display: none; }
+
+#recipe-modal {
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    padding: 25px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#recipe-form { display: flex; flex-direction: column; }
+#recipe-form label { margin-top: 15px; margin-bottom: 5px; font-weight: bold; color: #444; }
+#recipe-form input, #recipe-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box; /* Important for padding */
+}
+#recipe-form button {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* =============================================== */
+/* ========== MOBILE RESPONSIVE STYLES ========== */
+/* =============================================== */
+
+@media (max-width: 768px) {
+    /* On mobile, make the info panel a slide-up drawer */
+    #info-panel {
+        width: 100%;
+        height: 60vh; /* Cover 60% of the screen height */
+        top: auto;
+        bottom: 0;
+        transform: translateY(100%); /* Start hidden below the screen */
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+
+    #info-panel.info-panel-visible {
+        transform: translateY(0);
+    }
+
+    #close-panel-btn {
+        top: 15px;
+    }
+
+    /* Adjust FAB position to not overlap with the slide-up panel */
+    #add-recipe-fab {
+        bottom: 20px;
+        right: 20px;
+        width: 55px;
+        height: 55px;
+        font-size: 30px;
+        line-height: 55px;
+    }
+
+    /* Make modal content take up more screen width */
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+
+    /* Improve readability of form elements */
+    #recipe-form input, #recipe-form textarea {
+        font-size: 16px;
+    }
+}
